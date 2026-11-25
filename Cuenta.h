@@ -4,11 +4,10 @@
 #include <string>
 using namespace std;
 
-// Datos de una cuenta bancaria (RF-01)
 struct Cuenta {
     int id;
     string titular;
-    string tipo;      // "Ahorros" o "Corriente"
+    string tipo;     
     double saldo;
 };
 

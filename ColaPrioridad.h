@@ -3,7 +3,6 @@
 #include <iostream>
 #include <string>
 using namespace std;
-// Multilista: una lista ordenada de prioridades; cada prioridad contiene su propia cola FIFO.
 struct NodoSolicitud { string cliente, servicio; NodoSolicitud* sig; NodoSolicitud(const string&c,const string&s):cliente(c),servicio(s),sig(nullptr){} };
 struct NivelPrioridad { int prioridad; NodoSolicitud* frente; NodoSolicitud* fin; NivelPrioridad* sig; NivelPrioridad(int p):prioridad(p),frente(nullptr),fin(nullptr),sig(nullptr){} };
 class ColaPrioridad {

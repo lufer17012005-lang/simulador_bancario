@@ -5,7 +5,6 @@
 #include <string>
 using namespace std;
 
-// Cola enlazada FIFO para turnos generales (seccion 9.7, RF-06)
 struct Turno {
     int numero;
     string cliente;
@@ -21,7 +20,7 @@ class ColaTurnos {
 private:
     NodoTurno* frente;
     NodoTurno* fin;
-    int contador;   // genera el numero de turno
+    int contador;   
 
 public:
     ColaTurnos() : frente(nullptr), fin(nullptr), contador(0) {}
@@ -36,22 +35,20 @@ public:
 
     bool estaVacia() const { return frente == nullptr; }
 
-    // Agrega al final y devuelve el numero de turno asignado
     int encolar(const string& cliente, const string& servicio) {
         contador++;
         NodoTurno* nuevo = new NodoTurno{{contador, cliente, servicio}, nullptr};
-        if (fin == nullptr) frente = fin = nuevo;   // primer elemento
+        if (fin == nullptr) frente = fin = nuevo;   
         else { fin->sig = nuevo; fin = nuevo; }
         return contador;
     }
 
-    // Retira el turno del frente; false si la cola esta vacia (RF-11)
     bool desencolar(Turno& atendido) {
         if (estaVacia()) return false;
         NodoTurno* temp = frente;
         atendido = temp->dato;
         frente = frente->sig;
-        if (frente == nullptr) fin = nullptr;       // se retiro el unico elemento
+        if (frente == nullptr) fin = nullptr;       
         delete temp;
         return true;
     }
@@ -62,7 +59,6 @@ public:
         return true;
     }
 
-    // Muestra la fila en el orden en que sera atendida (RF-12)
     void mostrar() const {
         if (estaVacia()) { cout << "No hay turnos en espera.\n"; return; }
         for (NodoTurno* p = frente; p != nullptr; p = p->sig)

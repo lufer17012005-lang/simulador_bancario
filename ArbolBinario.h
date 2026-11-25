@@ -4,7 +4,6 @@
 #include <iostream>
 using namespace std;
 
-// Cada nodo guarda el ID de una cuenta. Los datos completos siguen en ListaCuentas.
 struct NodoArbol {
     int id;
     NodoArbol* izq;

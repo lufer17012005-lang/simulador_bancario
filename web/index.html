@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a43">
+  <title>Banco Claro — Simulador bancario</title>
+  <style>
+    :root{color-scheme:light;--navy:#102a43;--navy-2:#173e5c;--teal:#13a58b;--teal-soft:#e5f6f2;--ink:#172b3a;--muted:#718096;--line:#e7edf1;--bg:#f5f8fa;--white:#fff;--red:#c94c4c;--shadow:0 12px 32px rgba(16,42,67,.08)}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}.layout{min-height:100vh;display:grid;grid-template-columns:246px 1fr}.sidebar{background:var(--navy);color:#eaf3f8;padding:26px 18px;display:flex;flex-direction:column;gap:32px}.brand{display:flex;gap:12px;align-items:center;padding:0 8px;font-size:19px;font-weight:750;letter-spacing:-.4px}.brand-mark{width:37px;height:37px;background:var(--teal);color:white;border-radius:12px;display:grid;place-items:center;font-size:20px}.brand small{display:block;color:#a8c0ce;font-size:10px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase}.nav-label{color:#8da9b9;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:0 12px;margin:0 0 9px}.nav{display:grid;gap:5px}.nav button{border:0;text-align:left;background:transparent;color:#bfd0da;padding:12px;border-radius:9px;display:flex;gap:12px;align-items:center;font-weight:550}.nav button:hover,.nav button.active{background:#21435b;color:#fff}.nav .icon{width:19px;text-align:center;font-size:17px}.side-note{margin-top:auto;border:1px solid #31536a;background:#17364d;border-radius:12px;padding:14px;color:#c2d2db;font-size:12px}.side-note b{display:block;color:white;margin-bottom:4px}.main{min-width:0}.topbar{height:76px;background:var(--white);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,48px)}.crumb{color:var(--muted);font-size:13px}.user{display:flex;align-items:center;gap:11px;font-weight:650}.avatar{height:36px;width:36px;border-radius:50%;display:grid;place-items:center;background:#d8f1ec;color:#167e6e;font-weight:750}.content{max-width:1180px;padding:36px clamp(20px,4vw,48px);margin:0 auto}.heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:25px}.eyebrow{color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:1.6px;font-weight:750}.heading h1{font-size:28px;letter-spacing:-.8px;margin:4px 0}.heading p{color:var(--muted);margin:0}.btn{border:1px solid var(--line);background:white;color:var(--ink);border-radius:9px;padding:10px 15px;font-weight:650;transition:.15s}.btn:hover{transform:translateY(-1px);box-shadow:0 5px 14px #102a4315}.btn-primary{background:var(--teal);border-color:var(--teal);color:white}.btn-primary:hover{background:#0d927b}.btn-dark{background:var(--navy);color:#fff;border-color:var(--navy)}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:24px}.card{background:white;border:1px solid var(--line);border-radius:13px;box-shadow:0 2px 6px #102a4305}.stat{padding:21px 22px}.stat-head{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:13px}.stat-icon{width:34px;height:34px;border-radius:10px;background:var(--teal-soft);display:grid;place-items:center;color:#138c79;font-size:16px}.stat-value{font-size:25px;font-weight:760;letter-spacing:-.7px;margin:13px 0 1px}.stat-foot{font-size:12px;color:var(--muted)}.columns{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(270px,.85fr);gap:18px}.panel{padding:21px}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:17px}.panel h2{font-size:16px;margin:0;letter-spacing:-.2px}.text-link{color:#148a78;text-decoration:none;font-size:13px;font-weight:650;border:0;background:none}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;text-align:left}th{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:#82909b;font-weight:650;padding:0 10px 12px;border-bottom:1px solid var(--line)}td{padding:13px 10px;border-bottom:1px solid #edf1f3;font-size:13px;white-space:nowrap}tr:last-child td{border-bottom:0}.account-name{font-weight:680}.account-sub{color:var(--muted);font-size:11px}.badge{display:inline-flex;align-items:center;border-radius:99px;background:#edf7f4;color:#16816f;padding:4px 9px;font-size:11px;font-weight:650}.money{font-weight:700}.empty{text-align:center;padding:30px 12px;color:var(--muted)}.activity{display:grid}.activity-item{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid #edf1f3}.activity-item:last-child{border-bottom:0}.activity-icon{width:35px;height:35px;border-radius:50%;display:grid;place-items:center;background:#edf7f4;color:#148a78;flex:none}.activity-icon.out{background:#fff1ed;color:#bf664d}.activity-detail{min-width:0;flex:1}.activity-title{font-size:13px;font-weight:650}.activity-meta{font-size:11px;color:var(--muted)}.activity-amount{font-size:12px;font-weight:700;white-space:nowrap}.positive{color:#16816f}.negative{color:#b85a4c}.section[hidden]{display:none}.section{animation:appear .2s ease}@keyframes appear{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:none}}.search{width:min(230px,40vw);padding:9px 11px;border:1px solid var(--line);border-radius:8px;outline:none}.search:focus,input:focus,select:focus{border-color:var(--teal);box-shadow:0 0 0 3px #13a58b1c;outline:none}.toolbar{display:flex;gap:9px;align-items:center}.table-card{padding:21px}.modal{width:min(460px,calc(100% - 28px));border:0;border-radius:16px;padding:0;box-shadow:0 24px 80px #102a4360}.modal::backdrop{background:#102a4378;backdrop-filter:blur(3px)}.modal-inner{padding:25px}.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:17px}.modal-head h2{font-size:19px;margin:0}.close{border:0;background:#f0f4f6;border-radius:50%;width:32px;height:32px;font-size:18px;color:var(--muted)}.form-grid{display:grid;gap:13px}.field{display:grid;gap:5px}.field label{font-size:12px;font-weight:650;color:#526575}.field input,.field select{width:100%;padding:10px 11px;border:1px solid #dfe7eb;border-radius:8px;background:#fff}.form-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:20px}.toast{position:fixed;right:24px;bottom:24px;background:var(--navy);color:white;padding:13px 18px;border-radius:10px;box-shadow:var(--shadow);z-index:5;animation:appear .2s ease}.footer{text-align:center;color:#94a1aa;font-size:11px;margin:25px 0 0}.menu-toggle{display:none;border:0;background:none;font-size:22px;color:var(--navy)}
+    @media(max-width:900px){.layout{grid-template-columns:205px 1fr}.columns{grid-template-columns:1fr}.sidebar{padding:22px 13px}.content{padding-top:27px}}
+    @media(max-width:650px){.layout{display:block}.sidebar{position:fixed;z-index:4;inset:0 auto 0 0;width:246px;transform:translateX(-100%);transition:transform .2s;box-shadow:var(--shadow)}.sidebar.open{transform:translateX(0)}.menu-toggle{display:block}.topbar{height:64px;padding:0 17px}.crumb{display:none}.content{padding:25px 16px}.heading{align-items:flex-start}.heading h1{font-size:24px}.heading p{font-size:13px}.heading .btn{padding:9px;font-size:12px}.stats{grid-template-columns:1fr;gap:10px}.stat{padding:15px 17px}.stat-value{font-size:22px;margin-top:7px}.stat-head{font-size:12px}.panel,.table-card{padding:16px}.toolbar{flex-wrap:wrap}.search{width:100%;order:2}.user{font-size:13px}.user .avatar{width:32px;height:32px}}
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><div class="brand-mark">↗</div><div>Banco Claro<small>Simulador académico</small></div></div>
+      <div><p class="nav-label">Menú principal</p><nav class="nav" aria-label="Menú principal">
+        <button class="active" data-view="dashboard"><span class="icon">▦</span>Resumen</button>
+        <button data-view="accounts"><span class="icon">▤</span>Cuentas</button>
+        <button data-view="transactions"><span class="icon">↕</span>Movimientos</button>
+      </nav></div>
+      <div class="side-note"><b>Modo demostración</b>Esta página guarda los datos solo en este navegador. No es un banco real.</div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div style="display:flex;align-items:center;gap:12px"><button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button><span class="crumb">Simulador / <strong id="crumbTitle">Resumen</strong></span></div><div class="user"><span>Mi espacio</span><span class="avatar" aria-hidden="true">BC</span></div></header>
+      <div class="content">
+        <section class="section" id="dashboardView">
+          <div class="heading"><div><div class="eyebrow">Tu espacio financiero</div><h1>Hola, bienvenido 👋</h1><p>Este es el resumen de tus cuentas de demostración.</p></div><button class="btn btn-primary" data-action="operation">＋ Nueva operación</button></div>
+          <div class="stats">
+            <article class="card stat"><div class="stat-head"><span>Saldo total</span><span class="stat-icon">＄</span></div><div class="stat-value" id="totalBalance">$0</div><div class="stat-foot">En todas tus cuentas</div></article>
+            <article class="card stat"><div class="stat-head"><span>Cuentas activas</span><span class="stat-icon">▤</span></div><div class="stat-value" id="accountCount">0</div><div class="stat-foot">Cuentas registradas</div></article>
+            <article class="card stat"><div class="stat-head"><span>Movimientos</span><span class="stat-icon">↕</span></div><div class="stat-value" id="transactionCount">0</div><div class="stat-foot">Operaciones realizadas</div></article>
+          </div>
+          <div class="columns">
+            <article class="card panel"><div class="panel-head"><h2>Mis cuentas</h2><button class="text-link" data-view="accounts">Ver todas →</button></div><div class="table-wrap"><table><thead><tr><th>Cuenta</th><th>Tipo</th><th>Saldo disponible</th></tr></thead><tbody id="dashboardAccounts"></tbody></table></div></article>
+            <article class="card panel"><div class="panel-head"><h2>Actividad reciente</h2><button class="text-link" data-view="transactions">Ver todo →</button></div><div class="activity" id="recentActivity"></div></article>
+          </div>
+        </section>
+        <section class="section" id="accountsView" hidden>
+          <div class="heading"><div><div class="eyebrow">Administración</div><h1>Mis cuentas</h1><p>Consulta tus cuentas o agrega una nueva.</p></div><button class="btn btn-primary" data-action="new-account">＋ Nueva cuenta</button></div>
+          <article class="card table-card"><div class="panel-head"><h2>Cuentas registradas</h2><input class="search" id="accountSearch" type="search" placeholder="Buscar cuenta…" aria-label="Buscar cuenta"></div><div class="table-wrap"><table><thead><tr><th>Cuenta</th><th>Tipo</th><th>Fecha de apertura</th><th>Saldo disponible</th><th></th></tr></thead><tbody id="accountsTable"></tbody></table></div></article>
+        </section>
+        <section class="section" id="transactionsView" hidden>
+          <div class="heading"><div><div class="eyebrow">Tu historial</div><h1>Movimientos</h1><p>Revisa los depósitos, retiros y transferencias.</p></div><button class="btn btn-primary" data-action="operation">＋ Nueva operación</button></div>
+          <article class="card table-card"><div class="panel-head"><h2>Todos los movimientos</h2><span class="badge" id="historyCount">0 movimientos</span></div><div class="activity" id="allActivity"></div></article>
+        </section>
+        <p class="footer">Simulador bancario académico · Datos ficticios almacenados localmente en tu navegador</p>
+      </div>
+    </main>
+  </div>
+  <dialog class="modal" id="actionModal"><form class="modal-inner" id="actionForm"><div class="modal-head"><h2 id="modalTitle">Nueva operación</h2><button class="close" type="button" data-close aria-label="Cerrar">×</button></div><div class="form-grid" id="formFields"></div><div class="form-actions"><button class="btn" type="button" data-close>Cancelar</button><button class="btn btn-primary" type="submit" id="submitAction">Continuar</button></div></form></dialog>
+  <div id="toastArea" aria-live="polite"></div>
+  <script>
+    (() => {
+      'use strict';
+      const STORAGE_KEY = 'banco-claro-simulador-v1';
+      const money = value => new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(value || 0);
+      const dateText = value => new Intl.DateTimeFormat('es-CO',{day:'2-digit',month:'short',year:'numeric'}).format(new Date(value));
+      const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+      const demoData = () => ({accounts:[
+        {id:'1001',name:'Cuenta principal',number:'**** 4821',type:'Ahorros',balance:2450000,createdAt:'2025-02-14'},
+        {id:'1002',name:'Ahorro personal',number:'**** 3906',type:'Ahorros',balance:875000,createdAt:'2025-05-22'},
+        {id:'1003',name:'Cuenta diaria',number:'**** 1173',type:'Corriente',balance:320000,createdAt:'2025-08-03'}
+      ],transactions:[
+        {id:'t3',kind:'deposit',label:'Depósito recibido',accountId:'1001',amount:250000,date:'2025-11-18T10:20:00'},
+        {id:'t2',kind:'withdraw',label:'Retiro en cajero',accountId:'1003',amount:80000,date:'2025-11-16T14:05:00'},
+        {id:'t1',kind:'transfer-in',label:'Transferencia recibida',accountId:'1002',amount:125000,date:'2025-11-14T09:30:00'}
+      ]});
+      let state;
+      try { state = JSON.parse(localStorage.getItem(STORAGE_KEY)) || demoData(); } catch { state = demoData(); }
+      if (!state || !Array.isArray(state.accounts) || !Array.isArray(state.transactions)) state = demoData();
+      const save = () => localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      const accountName = id => state.accounts.find(a => a.id === id)?.name || 'Cuenta eliminada';
+      const sortedTransactions = () => [...state.transactions].sort((a,b) => new Date(b.date)-new Date(a.date));
+      const $ = selector => document.querySelector(selector);
+      function render() {
+        $('#totalBalance').textContent = money(state.accounts.reduce((sum,a)=>sum+Number(a.balance||0),0));
+        $('#accountCount').textContent = state.accounts.length;
+        $('#transactionCount').textContent = state.transactions.length;
+        const accountRows = state.accounts.map(a=>`<tr><td><div class="account-name">${escapeHtml(a.name)}</div><div class="account-sub">${escapeHtml(a.number)}</div></td><td><span class="badge">${escapeHtml(a.type)}</span></td><td class="money">${money(a.balance)}</td></tr>`).join('') || '<tr><td colspan="3" class="empty">Todavía no tienes cuentas.</td></tr>';
+        $('#dashboardAccounts').innerHTML = accountRows;
+        const query = ($('#accountSearch')?.value || '').toLowerCase();
+        const rows = state.accounts.filter(a=>`${a.name} ${a.number} ${a.type}`.toLowerCase().includes(query)).map(a=>`<tr><td><div class="account-name">${escapeHtml(a.name)}</div><div class="account-sub">${escapeHtml(a.number)}</div></td><td><span class="badge">${escapeHtml(a.type)}</span></td><td>${dateText(a.createdAt)}</td><td class="money">${money(a.balance)}</td><td><button class="text-link" data-action="operation" data-account="${escapeHtml(a.id)}">Operar</button></td></tr>`).join('') || '<tr><td colspan="5" class="empty">No se encontraron cuentas.</td></tr>';
+        $('#accountsTable').innerHTML = rows;
+        const txs = sortedTransactions();
+        $('#recentActivity').innerHTML = activityMarkup(txs.slice(0,4));
+        $('#allActivity').innerHTML = activityMarkup(txs);
+        $('#historyCount').textContent = `${txs.length} ${txs.length === 1 ? 'movimiento' : 'movimientos'}`;
+      }
+      function activityMarkup(items) {
+        if (!items.length) return '<div class="empty">Aún no hay movimientos.</div>';
+        return items.map(tx=>{const out=tx.kind==='withdraw'||tx.kind==='transfer-out';const sign=out?'−':'+';const icon=tx.kind==='withdraw'?'↗':tx.kind.startsWith('transfer')?'⇄':'↙';return `<div class="activity-item"><div class="activity-icon ${out?'out':''}">${icon}</div><div class="activity-detail"><div class="activity-title">${escapeHtml(tx.label)}</div><div class="activity-meta">${escapeHtml(accountName(tx.accountId))} · ${dateText(tx.date)}</div></div><div class="activity-amount ${out?'negative':'positive'}">${sign} ${money(tx.amount)}</div></div>`;}).join('');
+      }
+      const modal = $('#actionModal');
+      const accountOptions = selected => state.accounts.map(a=>`<option value="${escapeHtml(a.id)}" ${a.id===selected?'selected':''}>${escapeHtml(a.name)} · ${escapeHtml(a.number)} (${money(a.balance)})</option>`).join('');
+      function openModal(mode='operation', accountId='') {
+        if (mode==='new-account') {
+          $('#modalTitle').textContent='Crear nueva cuenta';
+          $('#submitAction').textContent='Crear cuenta';
+          $('#formFields').innerHTML='<div class="field"><label for="newName">Nombre de la cuenta</label><input id="newName" name="name" required maxlength="40" placeholder="Ej. Ahorro de viaje"></div><div class="field"><label for="newType">Tipo de cuenta</label><select id="newType" name="type"><option>Ahorros</option><option>Corriente</option></select></div><div class="field"><label for="initialBalance">Saldo inicial (COP)</label><input id="initialBalance" name="balance" type="number" min="0" step="1000" value="0" required></div>';
+        } else {
+          if (!state.accounts.length) { toast('Primero crea una cuenta para realizar operaciones.'); return; }
+          $('#modalTitle').textContent='Nueva operación';
+          $('#submitAction').textContent='Realizar operación';
+          $('#formFields').innerHTML=`<div class="field"><label for="operationType">Tipo de operación</label><select id="operationType" name="kind"><option value="deposit">Depósito</option><option value="withdraw">Retiro</option><option value="transfer">Transferencia</option></select></div><div class="field"><label for="sourceAccount">Cuenta</label><select id="sourceAccount" name="accountId" required>${accountOptions(accountId)}</select></div><div class="field" id="destinationField" hidden><label for="destinationAccount">Cuenta de destino</label><select id="destinationAccount" name="destinationId">${accountOptions('')}</select></div><div class="field"><label for="amount">Valor (COP)</label><input id="amount" name="amount" type="number" min="1" step="1000" required placeholder="Ej. 50000"></div>`;
+          $('#operationType').addEventListener('change',()=>$('#destinationField').hidden=$('#operationType').value!=='transfer');
+        }
+        modal.showModal();
+      }
+      function toast(message) { const el=document.createElement('div');el.className='toast';el.textContent=message;$('#toastArea').append(el);setTimeout(()=>el.remove(),3000); }
+      $('#actionForm').addEventListener('submit', event=>{
+        event.preventDefault();const form=new FormData(event.currentTarget);
+        if ($('#newName')) {
+          const name=String(form.get('name')).trim();const balance=Number(form.get('balance'));
+          if(!name||!Number.isFinite(balance)||balance<0){toast('Revisa los datos de la cuenta.');return;}
+          const id=String(Date.now());state.accounts.push({id,name,number:`**** ${String(Math.floor(1000+Math.random()*9000))}`,type:String(form.get('type')),balance,createdAt:new Date().toISOString()});
+          save();render();modal.close();toast('Cuenta creada correctamente.');return;
+        }
+        const kind=String(form.get('kind'));const account=state.accounts.find(a=>a.id===form.get('accountId'));const amount=Number(form.get('amount'));
+        if(!account||!Number.isFinite(amount)||amount<=0){toast('Ingresa un valor válido.');return;}
+        if((kind==='withdraw'||kind==='transfer')&&account.balance<amount){toast('Saldo insuficiente para realizar esta operación.');return;}
+        const now=new Date().toISOString();
+        if(kind==='deposit'){account.balance+=amount;state.transactions.unshift({id:now,kind:'deposit',label:'Depósito realizado',accountId:account.id,amount,date:now});}
+        else if(kind==='withdraw'){account.balance-=amount;state.transactions.unshift({id:now,kind:'withdraw',label:'Retiro realizado',accountId:account.id,amount,date:now});}
+        else {const destination=state.accounts.find(a=>a.id===form.get('destinationId'));if(!destination||destination.id===account.id){toast('Selecciona una cuenta de destino diferente.');return;}account.balance-=amount;destination.balance+=amount;state.transactions.unshift({id:`${now}-out`,kind:'transfer-out',label:`Transferencia a ${destination.name}`,accountId:account.id,amount,date:now});state.transactions.unshift({id:`${now}-in`,kind:'transfer-in',label:`Transferencia de ${account.name}`,accountId:destination.id,amount,date:now});}
+        save();render();modal.close();toast('Operación realizada correctamente.');
+      });
+      document.addEventListener('click',event=>{
+        const nav=event.target.closest('[data-view]');if(nav){const view=nav.dataset.view;document.querySelectorAll('.section').forEach(section=>section.hidden=section.id!==`${view}View`);document.querySelectorAll('.nav button').forEach(button=>button.classList.toggle('active',button.dataset.view===view));$('#crumbTitle').textContent=({dashboard:'Resumen',accounts:'Cuentas',transactions:'Movimientos'})[view];$('#sidebar').classList.remove('open');return;}
+        const action=event.target.closest('[data-action]');if(action){openModal(action.dataset.action,action.dataset.account||'');return;}
+        if(event.target.closest('[data-close]'))modal.close();
+      });
+      $('#accountSearch').addEventListener('input',render);
+      $('#menuToggle').addEventListener('click',()=>$('#sidebar').classList.toggle('open'));
+      render();
+    })();
+  </script>
+</body>
+</html>

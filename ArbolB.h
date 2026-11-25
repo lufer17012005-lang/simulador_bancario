@@ -2,7 +2,6 @@
 #define ARBOL_B_H
 #include <iostream>
 using namespace std;
-// Arbol B minimo grado 2: hasta 3 claves por nodo.
 class ArbolB {
     struct Nodo { int n; bool hoja; int k[3]; Nodo* hijo[4]; Nodo(bool h):n(0),hoja(h){for(int i=0;i<4;i++)hijo[i]=nullptr;} };
     Nodo* raiz;
